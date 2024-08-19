@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Frutas</title>
+    <link rel="stylesheet" href="/css/styleListar.css">
+</head>
+<body>
+
+    <div class="table-container">
+        <h1>Lista de Frutas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="fruta : ${listaFrutas}">
+                    <td th:text="${fruta.nombre}"></td>
+                    <td th:text="${fruta.cantidad}"></td>
+                    <td th:text="${fruta.precio}"></td>
+                    <td>
+                        <a href="#" th:href="@{/frutas/editar/{id}(id=${fruta.id})}" class="edit-button">Editar</a>
+                    </td>
+                    <td>
+                        <a href="#" th:href="@{/frutas/eliminar/{id}(id=${fruta.id})}" class="delete-button">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-group">
+            <a href="/frutas/formulario" class="button-form">Agregar Fruta</a>
+        </div>
+    </div>
+
+</body>
+</html>
